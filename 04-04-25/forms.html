@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    HTML Forms
+
+The <input> Element
+
+Example
+A form with input fields for text:
+
+<form>
+  <label for="fname">First name:</label><br>
+  <input type="text" id="fname" name="fname"><br>
+  <label for="lname">Last name:</label><br>
+  <input type="text" id="lname" name="lname">
+</form>
+<!--------------------->
+
+Radio Buttons
+
+Example
+
+<form>
+  <input type="radio" id="html" name="fav_language" value="HTML">
+  <label for="html">HTML</label><br>
+  <input type="radio" id="css" name="fav_language" value="CSS">
+  <label for="css">CSS</label><br>
+  <input type="radio" id="javascript" name="fav_language" value="JavaScript">
+  <label for="javascript">JavaScript</label>
+</form>
+
+<!--------------------->
+Checkboxes
+
+Example
+
+<form>
+  <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike">
+  <label for="vehicle1"> I have a bike</label><br>
+  <input type="checkbox" id="vehicle2" name="vehicle2" value="Car">
+  <label for="vehicle2"> I have a car</label><br>
+  <input type="checkbox" id="vehicle3" name="vehicle3" value="Boat">
+  <label for="vehicle3"> I have a boat</label>
+</form>
+<!--------------------->
+The Submit Button
+
+Example
+A form with a submit button:
+
+<form action="/action_page.php">
+  <label for="fname">First name:</label><br>
+  <input type="text" id="fname" name="fname" value="John"><br>
+  <label for="lname">Last name:</label><br>
+  <input type="text" id="lname" name="lname" value="Doe"><br><br>
+  <input type="submit" value="Submit">
+</form>
+<!---------------------------------------------------------------------------------------------------------------------->
+
+HTML Form Attributes
+
+The Action Attribute
+
+Example
+On submit, send form data to "action_page.php":
+
+<form action="/action_page.php">
+  <label for="fname">First name:</label><br>
+  <input type="text" id="fname" name="fname" value="John"><br>
+  <label for="lname">Last name:</label><br>
+  <input type="text" id="lname" name="lname" value="Doe"><br><br>
+  <input type="submit" value="Submit">
+</form>
+
+<!--------------------->
+
+The Target Attribute
+
+Value	Description
+_blank	The response is displayed in a new window or tab
+_self	The response is displayed in the current window
+_parent	The response is displayed in the parent frame
+_top	The response is displayed in the full body of the window
+framename	The response is displayed in a named iframe
+
+
+Example
+
+<form action="/action_page.php" target="_blank">
+<!--------------------->
+The Method Attribute
+
+Example
+This example uses the GET method when submitting the form data:
+
+<form action="/action_page.php" method="get">
+Example
+This example uses the POST method when submitting the form data:
+
+<form action="/action_page.php" method="post">
+Notes on GET:
+<!--------------------->
+
+The Autocomplete Attribute
+
+Example
+A form with autocomplete on:
+
+<form action="/action_page.php" autocomplete="on">
+<!--------------------->
+The Novalidate Attribute
+Example
+A form with a novalidate attribute:
+
+<form action="/action_page.php" novalidate>
+
+<!----------------------------------------------------------------------------------------------------------------------------->
+
+</body>
+</html>
