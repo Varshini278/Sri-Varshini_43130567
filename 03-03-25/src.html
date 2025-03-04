@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    The src Attribute
+Example
+<img src="img_chania.jpg" alt="Flowers in Chania">
+<!------------->
+The alt Attribute
+Example
+<img src="img_chania.jpg" alt="Flowers in Chania">
+If a browser cannot find an image, it will display the value of the alt attribute:
+
+Example
+<img src="wrongname.gif" alt="Flowers in Chania">
+Tip: A screen reader is a software program that reads the HTML code, and allows the user to "listen" to the content. Screen readers are useful for people who are visually impaired or learning disabled.
+<!------------->
+Image Size - Width and Height
+
+Example
+<img src="img_girl.jpg" alt="Girl in a jacket" style="width:500px;height:600px;">
+<!------------->
+Alternatively, you can use the width and height attributes:
+
+Example
+<img src="img_girl.jpg" alt="Girl in a jacket" width="500" height="600">
+<!------------->
+
+Images in Another Folder
+
+Example
+<img src="/images/html5.gif" alt="HTML5 Icon" style="width:128px;height:128px;">
+
+<!------------->
+Images on Another Server/Website
+
+Example
+<img src="https://faceprep.in/images/face_green.jpg" alt="faceprep.in">
+
+<!------------->
+Animated Images
+
+Example
+<img src="programming.gif" alt="Computer Man" style="width:48px;height:48px;">
+<!------------->
+Image as a Link
+
+Example
+<a href="default.asp">
+  <img src="smiley.gif" alt="HTML tutorial" style="width:42px;height:42px;">
+</a>
+<!------------->
+Image Floating
+
+Example
+<p><img src="smiley.gif" alt="Smiley face" style="float:right;width:42px;height:42px;">
+
+
+Background Image on a HTML element
+Example 1
+<p style="background-image: url('img_girl.jpg');">
+
+Example 2
+<style>
+p {
+  background-image: url('img_girl.jpg');
+}
+</style>
+<!------------->
+Background Image on a Page
+Example
+<style>
+body {
+  background-image: url('img_girl.jpg');
+}
+</style>
+<!------------->
+Background Repeat
+Example1
+<style>
+body {
+  background-image: url('example_img_girl.jpg');
+}
+</style>
+
+<!------------->
+
+Example2
+<style>
+body {
+  background-image: url('example_img_girl.jpg');
+  background-repeat: no-repeat;
+}
+</style>
+<!------------->
+Background Cover
+Example
+<style>
+body {
+  background-image: url('img_girl.jpg');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+}
+</style>
+<!------------->
+Background Stretch
+Example
+<style>
+body {
+  background-image: url('img_girl.jpg');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: 100% 100%;
+}
+</style>
+<!------------------------------------------------------------------------------------------------------------------------------->
+
+</body>
+</html>
