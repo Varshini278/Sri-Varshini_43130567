@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock Paper Scissors</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(135deg, #1e3c72, #2a5298);
+            color: #fff;
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            width: 400px;
+        }
+
+        h3 {
+            font-size: 26px;
+            margin-bottom: 20px;
+        }
+
+        .buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .buttons button {
+            background: transparent;
+            border: 2px solid white;
+            color: white;
+            padding: 15px;
+            font-size: 24px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .buttons button:hover {
+            background: white;
+            color: #1e3c72;
+        }
+
+        p {
+            font-size: 18px;
+            margin: 10px 0;
+        }
+
+        .scoreboard {
+            display: flex;
+            justify-content: space-around;
+            font-size: 18px;
+            margin-top: 20px;
+        }
+
+        #reset {
+            background-color: #ff4d4d;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+            margin-top: 20px;
+        }
+
+        #reset:hover {
+            background-color: #cc0000;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h3>Rock Paper Scissors</h3>
+    
+    <div class="buttons">
+        <button id="rock">✊</button>
+        <button id="paper">✋</button>
+        <button id="scissors">✌</button>
+    </div>
+
+    <p id="game-result">Make your move!</p>
+    <p><strong>You:</strong> <span id="user-choice">-</span> | <strong>Computer:</strong> <span id="computer-choice">-</span></p>
+
+    <div class="scoreboard">
+        <p>Wins: <span id="wins">0</span></p>
+        <p>Losses: <span id="losses">0</span></p>
+        <p>Ties: <span id="ties">0</span></p>
+    </div>
+
+    <button id="reset">Reset</button>
+</div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const choices = ["Rock", "Paper", "Scissors"];
+        let wins = 0, losses = 0, ties = 0, matches = 0;
+
+        const userChoiceElement = document.getElementById("user-choice");
+        const computerChoiceElement = document.getElementById("computer-choice");
+        const resultElement = document.getElementById("game-result");
+        const winsElement = document.getElementById("wins");
+        const lossesElement = document.getElementById("losses");
+        const tiesElement = document.getElementById("ties");
+        const resetButton = document.getElementById("reset");
+
+        document.getElementById("rock").addEventListener("click", () => play("Rock"));
+        document.getElementById("paper").addEventListener("click", () => play("Paper"));
+        document.getElementById("scissors").addEventListener("click", () => play("Scissors"));
+
+        function play(userChoice) {
+            matches++;
+            const computerChoice = choices[Math.floor(Math.random() * 3)];
+
+            userChoiceElement.innerText = userChoice;
+            computerChoiceElement.innerText = computerChoice;
+
+            if (userChoice === computerChoice) {
+                resultElement.innerText = "It's a Tie!";
+                ties++;
+            } else if (
+                (userChoice === "Rock" && computerChoice === "Scissors") ||
+                (userChoice === "Paper" && computerChoice === "Rock") ||
+                (userChoice === "Scissors" && computerChoice === "Paper")
+            ) {
+                resultElement.innerText = "You Win!";
+                wins++;
+            } else {
+                resultElement.innerText = "You Lose!";
+                losses++;
+            }
+
+            updateScores();
+
+            if (matches === 5) {
+                setTimeout(() => {
+                    alert(wins > losses ? "You win the game!" : losses > wins ? "You lose the game!" : "The game is a tie!");
+                    reset();
+                }, 300);
+            }
+        }
+
+        function updateScores() {
+            winsElement.innerText = wins;
+            lossesElement.innerText = losses;
+            tiesElement.innerText = ties;
+        }
+
+        function reset() {
+            wins = losses = ties = matches = 0;
+            userChoiceElement.innerText = "-";
+            computerChoiceElement.innerText = "-";
+            resultElement.innerText = "Make your move!";
+            updateScores();
+        }
+
+        resetButton.addEventListener("click", reset);
+    });
+</script>
+
+</body>
+</html>
