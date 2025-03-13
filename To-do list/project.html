@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vibrant To-Do List</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: beige;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .list-container {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+        .list-header input {
+            width: 70%;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            outline: none;
+        }
+        .list-header button {
+            background-color: #ff758c;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .list-header button:hover {
+            background-color: #ff4757;
+        }
+        .list-body {
+            margin-top: 15px;
+        }
+        .list-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: white;
+            padding: 10px;
+            border-radius: 5px;
+            margin: 5px 0;
+            transition: 0.3s;
+        }
+        .list-item input[type="checkbox"] {
+            transform: scale(1.2);
+            cursor: pointer;
+        }
+        .list-item p {
+            flex: 1;
+            margin: 0 10px;
+        }
+        .list-item button {
+            background-color: #ff4757;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .list-item button:hover {
+            background-color: #e84118;
+        }
+        .list-foot {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 15px;
+            align-items: center;
+        }
+        .list-foot button {
+            background-color: #ff4757;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .list-foot button:hover {
+            background-color: #c23616;
+        }
+    </style>
+</head>
+<body>
+    <div class="list-container">
+        <div class="list-header">
+            <input type="text" id="task-input" placeholder="Add a new task..." />
+            <button onclick="addNewTask()">+</button>
+        </div>
+        <div class="list-body"></div>
+        <div class="list-foot">
+            <p id="pending-tasks">No pending tasks</p>
+            <button onclick="resetTask()">Clear All</button>
+        </div>
+    </div>
+    <script>
+        const data = [];
+        const task_input = document.getElementById('task-input');
+        const list_body = document.querySelector('.list-body');
+
+        function addNewTask() {
+            let input_data = task_input.value.trim();
+            if (input_data === '') return;
+            
+            const task = { status: false, message: input_data };
+            data.push(task);
+            task_input.value = '';
+            render();
+        }
+
+        function updateCheckbox(i) {
+            data[i].status = !data[i].status;
+            render();
+        }
+
+        function deleteTask(i) {
+            data.splice(i, 1);
+            render();
+        }
+
+        function resetTask() {
+            data.length = 0;
+            render();
+        }
+
+        function render() {
+            list_body.innerHTML = '';
+            let count = 0;
+            data.slice().reverse().forEach((task, i) => {
+                const taskElement = document.createElement('div');
+                taskElement.className = 'list-item';
+                taskElement.innerHTML = `
+                    <input type="checkbox" onclick="updateCheckbox(${data.length - 1 - i})" ${task.status ? 'checked' : ''}/>
+                    <p style="text-decoration: ${task.status ? 'line-through' : 'none'};">${task.message}</p>
+                    <button onclick="deleteTask(${data.length - 1 - i})">X</button>
+                `;
+                list_body.appendChild(taskElement);
+                if (!task.status) count++;
+            });
+            document.getElementById("pending-tasks").textContent = `Pending tasks: ${count}`;
+        }
+    </script>
+   
+</body>
+</html>
