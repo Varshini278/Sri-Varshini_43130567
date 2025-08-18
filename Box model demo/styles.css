@@ -1,0 +1,77 @@
+body {
+  font-family: Arial, sans-serif;
+  text-align: center;
+  margin: 20px;
+}
+
+h2 {
+  margin-bottom: 20px;
+  color: #2c3e50;
+}
+
+.box-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+  
+}
+
+
+
+
+.box {
+  background-color: #3498db; 
+  color: white;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 250px;
+  height: 250px;
+  padding: 50px;
+  border: 5px solid red;
+  margin: 20px;
+  background-clip: content-box,padding-box;
+  background-image: linear-gradient(gold,gold),linear-gradient(#3498db,#3498db);
+  background-origin: border-box,content-box ;
+}
+
+.controls {
+  background: #f5f7f9;
+  padding: 15px;
+  border-radius: 8px;
+  width: 300px;
+  margin: 0 auto 30px auto;
+  text-align: left;
+}
+
+.controls label {
+  display: block;
+  margin: 10px 0;
+}
+
+input[type="range"] {
+  width: 150px;
+  margin: 0 10px;
+  accent-color: purple;
+}
+
+.legend {
+  width: 400px;
+  margin: 0 auto;
+  text-align: left;
+}
+
+.legend-box {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  margin-right: 8px;
+  border: 1px solid #ccc;
+  background-color: gray;
+}
+
+.legend .margin { background: transparent; border: 1px dashed #333; }
+.legend .border { background: orange; }
+.legend .padding { background: gold; }
+.legend .content { background: #3498db; }
