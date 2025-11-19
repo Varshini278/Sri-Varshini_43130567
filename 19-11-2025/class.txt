@@ -1,0 +1,32 @@
+package nov19;
+
+public class OMRKing {
+	void BMW520(){
+		System.out.println("King Car");
+	}
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		People1 r = new People1();
+		r.bike();
+		System.out.println(r.name_people1);
+		OMRKing king = new
+				OMRKing();
+		king.BMW520();
+		}
+
+}
+class People1{
+	String name_people1 = "Robin";
+	void car(){
+		System.out.println("People1 Car");
+	}
+	void bike(){
+		System.out.println("People1 Bike");
+	}
+}
+class People2{
+	String name_people1 = "Ted";
+	void car(){
+		System.out.println("People2 Car");
+	}
+}
