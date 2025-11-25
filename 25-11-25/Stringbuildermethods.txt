@@ -1,0 +1,40 @@
+package nov25;
+public class Stringbuildermethods {
+
+    public static void main(String[] args) {
+
+        // Create StringBuilder object
+        StringBuilder sb = new StringBuilder("Java");
+
+        System.out.println("Initial: " + sb);
+
+        // 1. append()
+        sb.append(" Programming");
+        System.out.println("After append(): " + sb);
+
+        // 2. insert()
+        sb.insert(5, "Awesome ");
+        System.out.println("After insert(): " + sb);
+
+        // 3. replace()
+        sb.replace(5, 13, "Super ");
+        System.out.println("After replace(): " + sb);
+
+        // 4. delete()
+        sb.delete(5, 11);
+        System.out.println("After delete(): " + sb);
+
+        // 5. reverse()
+        sb.reverse();
+        System.out.println("After reverse(): " + sb);
+
+        // Reverse back to normal for next operations
+        sb.reverse();
+
+        // 6. capacity()
+        System.out.println("Capacity: " + sb.capacity());
+
+        // 7. length()
+        System.out.println("Length: " + sb.length());
+    }
+}

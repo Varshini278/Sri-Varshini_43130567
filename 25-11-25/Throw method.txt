@@ -1,0 +1,33 @@
+
+package nov25;
+import java.util.Scanner;
+
+public class Throw {
+
+    static void validate(int age) {
+        if(age < 18) {
+            throw new ArithmeticException("Sorry - You are not eligible to vote");
+        } else {
+            System.out.println("Welcome to vote");
+        }
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter your age: ");
+        int age = sc.nextInt();
+
+        try {
+            validate(age);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+
+        
+        System.out.println("End of voting process.");
+        System.out.println("Program Completed Successfully.");
+       
+        sc.close();
+    }
+}

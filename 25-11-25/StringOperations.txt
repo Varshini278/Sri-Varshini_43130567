@@ -1,0 +1,64 @@
+package nov25;
+
+public class StringOperations {
+
+    public static void main(String[] args) {
+
+        String str = "   Java Programming Language   ";
+
+        System.out.println("Original String: \"" + str + "\"");
+        System.out.println("---------------------------------------------");
+
+        // length()
+        System.out.println("Length: " + str.length());
+
+        // trim()
+        String trimmed = str.trim();
+        System.out.println("Trimmed: \"" + trimmed + "\"");
+
+        // charAt()
+        System.out.println("Character at index 5: " + trimmed.charAt(5));
+
+        // toUpperCase() and toLowerCase()
+        System.out.println("Uppercase: " + trimmed.toUpperCase());
+        System.out.println("Lowercase: " + trimmed.toLowerCase());
+
+        // substring()
+        System.out.println("Substring from index 5: " + trimmed.substring(5));
+        System.out.println("Substring (0, 4): " + trimmed.substring(0, 4));
+
+        // contains()
+        System.out.println("Contains 'Programming'? " + trimmed.contains("Programming"));
+
+        // startsWith() and endsWith()
+        System.out.println("Starts with 'Java'? " + trimmed.startsWith("Java"));
+        System.out.println("Ends with 'age'? " + trimmed.endsWith("age"));
+
+        // equals() and equalsIgnoreCase()
+        String test = "java programming language";
+        System.out.println("equals(): " + trimmed.equals(test));
+        System.out.println("equalsIgnoreCase(): " + trimmed.equalsIgnoreCase(test));
+
+        // replace()
+        System.out.println("Replace 'a' with 'x': " + trimmed.replace('a', 'x'));
+
+        // split()
+        String[] words = trimmed.split(" ");
+        System.out.println("Split result:");
+        for (String word : words) {
+            if (!word.isEmpty()) System.out.println(word);
+        }
+
+        // toCharArray()
+        System.out.println("Characters:");
+        char[] chars = trimmed.toCharArray();
+        for (char c : chars) {
+            System.out.print(c + " ");
+        }
+        System.out.println();
+
+        // indexOf() and lastIndexOf()
+        System.out.println("\nindexOf('a'): " + trimmed.indexOf('a'));
+        System.out.println("lastIndexOf('a'): " + trimmed.lastIndexOf('a'));
+    }
+}

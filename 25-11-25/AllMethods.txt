@@ -1,0 +1,100 @@
+package nov25;
+
+import java.util.Scanner;
+
+public class AllMethods {
+
+    private int age;  // used for getter & setter demonstration
+
+    //  Setter method
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    // Getter method
+    public int getAge() {
+        return this.age;
+    }
+
+    // Non-static method
+    public void showMessage() {
+        System.out.println("➡ This is a non-static method.");
+    }
+
+    //  Static method
+    public static void staticMessage() {
+        System.out.println("➡ This is a static method.");
+    }
+
+    //  Method with parameters
+    public void greet(String name) {
+        System.out.println("👋 Hello, " + name);
+    }
+
+    // Method with return value
+    public int square(int num) {
+        return num * num;
+    }
+
+    // Method overloading (same name, different parameters)
+    public void display(int num) {
+        System.out.println("Displaying integer: " + num);
+    }
+
+    public void display(String text) {
+        System.out.println("Displaying text: " + text);
+    }
+
+    //  Method using exception handling
+    public void validateAge(int age) {
+        try {
+            if (age < 18) {
+                throw new ArithmeticException("❌ Not Eligible to Vote!");
+            } else {
+                System.out.println("✔ Eligible to vote!");
+            }
+        } catch (ArithmeticException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    //  Void method with message (already above but another example)
+    public void continueProgram() {
+        System.out.println("➡ Program continues normally...");
+    }
+
+    // Main method (Entry point)
+    public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+        AllMethods obj = new AllMethods();
+
+        System.out.print("Enter your name: ");
+        String name = sc.nextLine();
+
+        System.out.print("Enter your age: ");
+        int userAge = sc.nextInt();
+
+        // calling methods
+        obj.greet(name);
+        obj.setAge(userAge);
+
+        System.out.println("Your stored age (via getter): " + obj.getAge());
+
+        obj.showMessage();
+        staticMessage();
+
+        obj.display(10);
+        obj.display("Java Methods Demo");
+
+        System.out.println("Square of 5: " + obj.square(5));
+
+        obj.validateAge(userAge);
+
+        obj.continueProgram();
+
+        System.out.println("🔚 End of Program.");
+
+        sc.close();
+    }
+}
