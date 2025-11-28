@@ -1,0 +1,38 @@
+package nov27;
+
+import java.util.LinkedHashMap;
+import java.util.Map;
+
+public class LinkedHashMap1 {
+    public static void main(String[] args) {
+
+        // Create LinkedHashMap
+        LinkedHashMap<Integer, String> map = new LinkedHashMap<>();
+
+        // Add key-value pairs (only ASCII letters)
+        map.put(1, "Red");
+        map.put(2, "Green");
+        map.put(3, "Blue");
+        map.put(4, "Yellow");
+
+        // Print whole map
+        System.out.println("LinkedHashMap: " + map);
+
+        // Access value
+        System.out.println("Value of key 2: " + map.get(2));
+
+        // Remove a key
+        map.remove(3);
+        System.out.println("After removing key 3: " + map);
+
+        // Check presence
+        System.out.println("Contains key 1? " + map.containsKey(1));
+        System.out.println("Contains value 'Blue'? " + map.containsValue("Blue"));
+
+        // Iterate through map
+        System.out.println("\nIterating through LinkedHashMap:");
+        for (Map.Entry<Integer, String> entry : map.entrySet()) {
+            System.out.println(entry.getKey() + " -> " + entry.getValue());
+        }
+    }
+}

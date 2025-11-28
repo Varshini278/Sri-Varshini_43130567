@@ -1,0 +1,39 @@
+package nov27;
+
+import java.util.TreeMap;
+import java.util.Map;
+
+public class TreeMap1{
+    public static void main(String[] args) {
+
+        // Create TreeMap
+        TreeMap<Integer, String> map = new TreeMap<>();
+
+        // Add key-value pairs
+        map.put(4, "Yellow");
+        map.put(1, "Red");
+        map.put(3, "Blue");
+        map.put(2, "Green");
+
+        // Print the whole map
+        System.out.println("TreeMap: " + map);
+
+        // Access a value
+        System.out.println("Value of key 2: " + map.get(2));
+
+        // Remove a key
+        map.remove(3);
+        System.out.println("After removing key 3: " + map);
+
+        // Check key and value presence
+        System.out.println("Contains key 1? " + map.containsKey(1));
+        System.out.println("Contains value 'Blue'? " + map.containsValue("Blue"));
+
+        // Iterate through map
+        System.out.println("\nIterating through TreeMap:");
+        for (Map.Entry<Integer, String> entry : map.entrySet()) {
+            System.out.println(entry.getKey() + " -> " + entry.getValue());
+        }
+    }
+}
+

@@ -1,0 +1,21 @@
+package nov27;
+import java.util.LinkedList;
+
+public class LinkedList1{
+
+    public static void main(String[] args) {
+
+        LinkedList<String> list = new LinkedList<>();
+
+        // add elements
+        list.add("Red");
+        list.add("Green");
+        list.add("Blue");
+        list.add("Pink");
+        
+        System.out.println("Element at index 3: " + list.get(3));
+
+ 
+        System.out.println("Size of list: " + list.size());
+    }
+}

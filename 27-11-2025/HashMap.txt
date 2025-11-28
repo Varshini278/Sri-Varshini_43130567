@@ -1,0 +1,29 @@
+package nov27;       
+import java.util.HashMap;
+
+public class HashMap1 {
+
+    public static void main(String[] args) {
+
+        HashMap<Integer, String> map = new HashMap<>();
+
+        map.put(1, "Red");
+        map.put(2, "Green");
+        map.put(3, "Blue");
+        map.put(4, "Yellow");
+
+        System.out.println("HashMap: " + map);
+        System.out.println("Value of key 2: " + map.get(2));
+
+        map.remove(3);
+        System.out.println("After removing key 3: " + map);
+
+        System.out.println("Contains key 1? " + map.containsKey(1));
+        System.out.println("Contains value 'Blue'? " + map.containsValue("Blue"));
+
+        System.out.println("\nIterating:");
+        for (Integer key : map.keySet()) {
+            System.out.println(key + " → " + map.get(key));
+        }
+    }
+}

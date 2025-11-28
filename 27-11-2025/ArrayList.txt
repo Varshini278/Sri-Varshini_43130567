@@ -1,0 +1,24 @@
+package nov27;
+
+import java.util.ArrayList;
+
+public class ArrayList1{
+
+    public static void main(String[] args) {
+
+        ArrayList<String> list = new ArrayList<>();
+
+        // add elements
+        list.add("Carrot");
+        list.add("Potato");
+        list.add("Beans");
+        list.add("Cauliflower");
+        list.add("Peas");
+
+        
+        System.out.println("Element at index 4: " + list.get(4));
+
+     
+        System.out.println("Size of list: " + list.size());
+    }
+}
