@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Teacher: Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .table-responsive { max-height: 400px; overflow-y: auto; }
+    </style>
+</head>
+<body class="bg-light">
+    <div class="container mt-5 mb-5">
+        <div class="row justify-content-center">
+            <div class="col-md-10">
+                
+                <div th:if="${param.success}" class="alert alert-success alert-dismissible fade show shadow-sm text-center mb-4" role="alert">
+                    <strong>Success!</strong> Question has been saved to the database.
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+
+                <div th:if="${param.deleted}" class="alert alert-warning alert-dismissible fade show shadow-sm text-center mb-4" role="alert">
+                    Question deleted successfully.
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    <h2 class="mb-0 text-dark">Teacher Dashboard</h2>
+                    <form th:action="@{/logout}" method="post">
+                        <button type="submit" class="btn btn-outline-danger btn-sm shadow-sm">Logout</button>
+                    </form>
+                </div>
+
+                <div class="card shadow border-0 mb-5">
+                    <div class="card-header bg-primary text-white py-3">
+                        <h5 class="mb-0">Add New Question</h5>
+                    </div>
+                    <div class="card-body p-4">
+                        <form th:action="@{/teacher/save}" method="post">
+                            <div class="mb-3">
+                                <label class="form-label fw-bold">Question Text</label>
+                                <textarea name="question" rows="3" placeholder="Enter question here" class="form-control" required></textarea>
+                            </div>
+
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <label class="form-label small fw-bold">Option A</label>
+                                    <input name="optionA" class="form-control" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label small fw-bold">Option B</label>
+                                    <input name="optionB" class="form-control" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label small fw-bold">Option C</label>
+                                    <input name="optionC" class="form-control" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label small fw-bold">Option D</label>
+                                    <input name="optionD" class="form-control" required>
+                                </div>
+                            </div>
+                            
+                            <div class="mb-3 mt-4">
+                                <label class="form-label fw-bold text-success">Correct Answer</label>
+                                <input name="correctAnswer" class="form-control border-success" placeholder="Must match one of the options exactly" required>
+                            </div>
+
+                            <button type="submit" class="btn btn-success btn-lg w-100 shadow-sm mt-2">Save Question</button>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="card shadow border-0 mb-5">
+                    <div class="card-header bg-dark text-white py-3">
+                        <h5 class="mb-0">Existing Question Bank</h5>
+                    </div>
+                    <div class="card-body p-0">
+                        <div class="table-responsive">
+                            <table class="table table-hover mb-0">
+                                <thead class="table-secondary">
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Question</th>
+                                        <th>Answer</th>
+                                        <th class="text-center">Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr th:each="q : ${questions}">
+                                        <td th:text="${q.id}"></td>
+                                        <td th:text="${q.question}"></td>
+                                        <td><span class="badge bg-success" th:text="${q.correctAnswer}"></span></td>
+                                        <td class="text-center">
+                                            <a th:href="@{/teacher/delete/{id}(id=${q.id})}" 
+                                               class="btn btn-outline-danger btn-sm"
+                                               onclick="return confirm('Delete this question?')">Delete</a>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card shadow border-0">
+                    <div class="card-header bg-success text-white py-3">
+                        <h5 class="mb-0">Student Performance Results</h5>
+                    </div>
+                    <div class="card-body p-0">
+                        <div class="table-responsive">
+                            <table class="table table-striped align-middle mb-0">
+                                <thead class="table-light">
+                                    <tr>
+                                        <th>Student Email</th>
+                                        <th>Score</th>
+                                        <th>Percentage</th>
+                                        <th>Status</th>
+                                        <th>Date Submitted</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr th:each="res : ${results}">
+                                        <td th:text="${res.studentEmail}" class="fw-bold text-primary"></td>
+                                        <td th:text="${res.score} + ' / ' + ${res.totalQuestions}"></td>
+                                        <td>
+                                            <div class="progress" style="height: 20px; width: 100px;">
+                                                <div class="progress-bar bg-info text-dark fw-bold" 
+                                                     role="progressbar" 
+                                                     th:style="'width: ' + (${res.score} * 100.0 / ${res.totalQuestions}) + '%;'"
+                                                     th:text="${#numbers.formatDecimal((res.score * 100.0 / res.totalQuestions), 1, 0)} + '%'">
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <span th:if="${(res.score * 100.0 / res.totalQuestions) >= 50}" class="badge bg-success">PASS</span>
+                                            <span th:if="${(res.score * 100.0 / res.totalQuestions) < 50}" class="badge bg-danger">FAIL</span>
+                                        </td>
+                                        <td th:text="${#temporals.format(res.submissionDate, 'dd MMM yyyy, HH:mm')}"></td>
+                                    </tr>
+                                    <tr th:if="${#lists.isEmpty(results)}">
+                                        <td colspan="5" class="text-center py-5 text-muted fst-italic">No students have completed the exam yet.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
